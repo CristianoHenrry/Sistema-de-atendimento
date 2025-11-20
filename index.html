@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Atendimento Integrado</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+</head>
+<body>
+
+    <nav class="menu-navegacao">
+        <button onclick="mostrarTela('login')">Login</button>
+        <button onclick="mostrarTela('totem')">Totem</button>
+        <button onclick="mostrarTela('painel')">Painel TV</button>
+        <button onclick="mostrarTela('guiche')">Guichê</button>
+    </nav>
+
+    <section id="login" class="tela ativa">
+        <div class="login-container">
+            <div class="header-login">
+                <div class="logo-placeholder"></div>
+                <h2>Sistema de Atendimento</h2>
+                <p>Acesso restrito aos atendentes</p>
+            </div>
+            <form class="login-box" onsubmit="event.preventDefault(); mostrarTela('guiche');">
+                <label>Usuário</label>
+                <input type="text" placeholder="Digite seu usuário">
+                <label>Senha</label>
+                <input type="password" placeholder="Digite sua senha">
+                <button type="submit" class="btn-entrar">Entrar</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="totem" class="tela">
+        <div class="container-totem">
+            <header>
+                <h1>TOTEM DE ATENDIMENTO</h1>
+                <p>Toque para retirar sua senha</p>
+            </header>
+            <div class="buttons-area">
+                <div class="btn-card" onclick="emitirSenha('SP')">
+                    <h2>Urgência</h2>
+                    <p>Prioritários</p>
+                </div>
+                <div class="btn-card" onclick="emitirSenha('SG')">
+                    <h2>Consulta</h2>
+                    <p>Geral</p>
+                </div>
+                <div class="btn-card" onclick="emitirSenha('SE')">
+                    <h2>Exames</h2>
+                    <p>Laboratório</p>
+                </div>
+                <div class="btn-card" onclick="emitirSenha('SG')">
+                    <h2>Retorno</h2>
+                    <p>Agendados</p>
+                </div>
+            </div>
+            <footer>Sistema Integrado de Atendimento</footer>
+        </div>
+    </section>
+
+    <section id="painel" class="tela">
+        <div class="header-painel">PAINEL DE CHAMADA</div>
+        <div class="grid-painel">
+            <div class="card-painel destaque">
+                <h2 id="painel-senha-atual">----</h2>
+                <p id="painel-guiche-atual">Aguardando...</p>
+            </div>
+            <div class="lista-chamadas">
+                <h3>Histórico</h3>
+                <table id="tabela-historico">
+                    </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="guiche" class="tela">
+        <div class="header-painel">ÁREA DO ATENDENTE</div>
+        <div class="grid-painel">
+            <div class="card-painel" style="grid-column: span 2;">
+                <p class="label-guiche">Em Atendimento</p>
+                <h2 id="guiche-senha-atual" style="color: #fff;">----</h2>
+                <p id="guiche-status" style="color: #90ff95;">Disponível</p>
+            </div>
+
+            <div class="controles-box">
+                <h3>Ações</h3>
+                <div class="btn-grid-acoes">
+                    <button class="btn-action chamar" onclick="chamarProximo()">📢 Chamar</button>
+                    <button class="btn-action iniciar" onclick="atualizarStatus('Em andamento')">▶ Iniciar</button>
+                    <button class="btn-action finalizar" onclick="atualizarStatus('Finalizado')">✅ Finalizar</button>
+                    <button class="btn-action ausente" onclick="atualizarStatus('Ausente')">❌ Ausente</button>
+                </div>
+            </div>
+
+            <div class="lista-espera">
+                <h3>Próximos da Fila</h3>
+                <ul id="lista-espera-guiche">
+                    </ul>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
