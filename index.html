@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Atendimento</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Sistema de Atendimento</h1>
+        <p class="descricao">Gerencie senhas, atendimentos e relatórios em uma interface única.</p>
+
+        <!-- NAV DE ABAS -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="trocarAba('aba-senhas')">Emitir Senhas</button>
+            <button class="tab-btn" onclick="trocarAba('aba-atendimento')">Atendimento</button>
+            <button class="tab-btn" onclick="trocarAba('aba-relatorios')">Relatórios</button>
+        </div>
+
+        <!-- EMITIR SENHAS -->
+        <div id="aba-senhas" class="tab atual">
+
+            <h2>Emitir Senhas</h2>
+
+            <button class="btn roxo" onclick="emitirSenha('SP')">Emitir Senha Prioritária (SP)</button>
+            <button class="btn azul" onclick="emitirSenha('SE')">Emitir Senha Exames (SE)</button>
+            <button class="btn cinza" onclick="emitirSenha('SG')">Emitir Senha Geral (SG)</button>
+
+        </div>
+
+        <!-- ATENDIMENTO -->
+        <div id="aba-atendimento" class="tab">
+
+            <h2>Atendimento</h2>
+
+            <button class="btn verde" onclick="chamarProximo()">Chamar Próxima Senha</button>
+
+            <div class="painel">
+                <h3>Últimas 5 Senhas Chamadas</h3>
+                <ul id="listaChamadas"></ul>
+            </div>
+
+        </div>
+
+        <!--  RELATÓRIOS -->
+        <div id="aba-relatorios" class="tab">
+
+            <h2>Relatórios</h2>
+
+            <button class="btn roxo" onclick="gerarRelatorioDiario()">Gerar Relatório Diário</button>
+            <button class="btn azul" onclick="gerarRelatorioMensal()">Gerar Relatório Mensal</button>
+
+            <div class="painel" id="painel-relatorio">
+                <h3>Resultado do Relatório</h3>
+                <div id="resultado"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="Scp.js"></script>
+</body>
+</html>
